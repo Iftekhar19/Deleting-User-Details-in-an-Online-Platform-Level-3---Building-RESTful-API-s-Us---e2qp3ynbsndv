@@ -13,16 +13,21 @@ app.use(express.json());
 //Write DELETE endpoint for deleting the details of user
 app.delete("/api/v1/details/:id",(req,res)=>
 {
-  let id=req.params.id*1;
-  const ansDetails=userDetails.find(e=>e.id===id);
+  let id=req.params.id;
+  const ansDetails=userDetails.find(e=>e.id==id);
   if(!ansDetails)
   {
-    return res.status(200).send({
+    console.log(ansDetails)
+    return res.status(404).send({
       status: "failed",
       message: "User not found!",
     });
   }
-  let newUserDetails=userDetails.filter((e)=>e.id!=ansDetails.id);
+  else
+  {
+
+  console.log(ansDetails)
+  let newUserDetails=userDetails.filter((e)=>e.id!==ansDetails.id);
   fs.writeFile(
     `${__dirname}/data/userDetails.json`,
     JSON.stringify(newUserDetails),
@@ -36,6 +41,7 @@ app.delete("/api/v1/details/:id",(req,res)=>
       });
     }
   );
+  }
 
 })
 // PATCH endpoint for editing user details
