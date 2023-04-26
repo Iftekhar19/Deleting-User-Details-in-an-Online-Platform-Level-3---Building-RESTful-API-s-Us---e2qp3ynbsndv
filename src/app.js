@@ -17,7 +17,7 @@ app.delete("/api/v1/details/:id",(req,res)=>
   const ansDetails=userDetails.find(e=>e.id===id);
   if(!ansDetails)
   {
-    return res.status(404).send({
+    return res.status(200).send({
       status: "failed",
       message: "User not found!",
     });
