@@ -27,11 +27,11 @@ app.delete("/api/v1/details/:id",(req,res)=>
     `${__dirname}/data/userDetails.json`,
     JSON.stringify(newUserDetails),
     (err) => {
-      res.status(200).json({
+      res.status(201).json({
         status: "success",
         "message": "User details deleted successfully",
-        data: {
-          ansDetails,
+        "data": {
+          "details":ansDetails,
         },
       });
     }
