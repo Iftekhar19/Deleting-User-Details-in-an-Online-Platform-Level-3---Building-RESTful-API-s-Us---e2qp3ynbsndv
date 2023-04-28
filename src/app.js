@@ -18,7 +18,7 @@ app.delete("/api/v1/details/:id",(req,res)=>
   const ansDetails=userDetails.find(e=>e.id==id);
   if(!ansDetails)
   {
-    // console.log(ansDetails)
+    console.log(ansDetails)
     return res.status(404).send({
       status: "failed",
       message: "User not found!",
@@ -34,7 +34,7 @@ app.delete("/api/v1/details/:id",(req,res)=>
     `${__dirname}/data/userDetails.json`,
     JSON.stringify(newUserDetails),
     (err) => {
-      res.status(201).json({
+      res.status(200).json({
         status: "success",
         "message": "User details deleted successfully",
         "data": {
