@@ -13,7 +13,7 @@ app.use(express.json());
 //Write DELETE endpoint for deleting the details of user
 app.delete("/api/v1/details/:id",(req,res)=>
 {
-  let id=req.params.id;
+  let id=req.params.id*1;
   console.log(id)
   const ansDetails=userDetails.find(e=>e.id==id);
   if(!ansDetails)
@@ -34,7 +34,7 @@ app.delete("/api/v1/details/:id",(req,res)=>
     `${__dirname}/data/userDetails.json`,
     JSON.stringify(newUserDetails),
     (err) => {
-      res.status(200).json({
+      res.status(201).json({
         status: "success",
         "message": "User details deleted successfully",
         "data": {
